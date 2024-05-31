@@ -17,9 +17,10 @@ Setup
 
 1. Clone the repository:
 
-    git clone https://github.com/yourusername/jasperreports-pdf-generator.git
+    git clone https://github.com/eunlocker/php_jasper_report.git
    
-    cd jasperreports-pdf-generator
+    cd   php_jasper_report
+
 
 3. Configure the script:
 
