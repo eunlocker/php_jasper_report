@@ -41,22 +41,7 @@ Usage
 
 - The script deletes any existing report.pdf file before generating a new report to avoid caching issues.
 - The generated report is opened in a new browser tab.
-
-Example php
-
-
- 
-$javaPath = '/home/melcylif/public_html/d/jdk1.8.0_151/bin/java';  
-$jarFile = 'jasper.jar';  
- 
-update your mysql db 
-$dbUrl = "jdbc:mysql://localhost:3306/yourdb";
-$dbUsername = "dbusername";
-$dbPassword = "dbpass";
-
- 
  
 
-License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
