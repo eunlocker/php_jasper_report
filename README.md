@@ -18,19 +18,20 @@ Setup
 1. Clone the repository:
 
     git clone https://github.com/yourusername/jasperreports-pdf-generator.git
+   
     cd jasperreports-pdf-generator
 
-2. Configure the script:
+3. Configure the script:
 
     - Set the path to your Java installation in the $javaPath variable.
     - Specify the name of your JasperReports JAR file in the $jarFile variable.
     - Set your database connection details ($dbUrl, $dbUsername, $dbPassword).
 
-3. Ensure JasperReports JAR file is available:
+4. Ensure JasperReports JAR file is available:
 
     - Place the JasperReports JAR file in the same directory as the PHP script or adjust the $jarFile path accordingly.
 
-4. Run the script:
+5. Run the script:
 
     - Access the script via a web browser, passing the required hdid and reportFileName parameters.
 
@@ -41,52 +42,20 @@ Usage
 - The script deletes any existing report.pdf file before generating a new report to avoid caching issues.
 - The generated report is opened in a new browser tab.
 
-Example
+Example php
 
-<?php
+
  
 $javaPath = '/home/melcylif/public_html/d/jdk1.8.0_151/bin/java';  
 $jarFile = 'jasper.jar';  
  
-$hdid = isset($_GET['hdid']) ? $_GET['hdid'] : null;
-$reportFileName = isset($_GET['reportFileName']) ? $_GET['reportFileName'] : null;
-
-if ($hdid === null || $reportFileName === null) {
-    die("Both hdid and reportFileName parameters are required.");
-}
+update your mysql db 
 $dbUrl = "jdbc:mysql://localhost:3306/yourdb";
 $dbUsername = "dbusername";
 $dbPassword = "dbpass";
 
  
-$reportFilePath = 'report.pdf';
-
  
-if (file_exists($reportFilePath)) {
-    unlink($reportFilePath);
-}
-
- 
-$command = $javaPath . " -jar " . escapeshellarg($jarFile) . " " . escapeshellarg($hdid) . " " . escapeshellarg($reportFileName) . " " . escapeshellarg($dbUrl) . " " . escapeshellarg($dbUsername) . " " . escapeshellarg($dbPassword) . " 2>&1";
-
-$output = shell_exec($command);
-
- 
-if (file_exists($reportFilePath)) {
-    // Output any command output
-    echo "<pre>$output</pre>";
-    
- 
-    $pdfUrl = 'http://' . $_SERVER['HTTP_HOST'] . '/d/' . $reportFilePath;
-    
- 
-    echo "<script>window.open('" . $pdfUrl . "', '_blank');</script>";
-} else {
-    // If report generation failed, output error message and command output
-    echo "<pre>Report generation failed. Please check the logs for details.</pre>";
-    echo "<pre>$output</pre>";
-}
-?>
 
 License
 
