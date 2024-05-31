@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="R003_grn_print" language="javascript" pageWidth="1002" pageHeight="5000" orientation="Landscape" columnWidth="962" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" isFloatColumnFooter="true">
+	<property name="ireport.zoom" value="0.9090909090909095"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="HeaderID" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[call ssp_eu_hms_rep_grn($P{HeaderID});]]>
+	</queryString>
+	<field name="nSales_GRN_HDID" class="java.lang.Long"/>
+	<field name="cBillNo" class="java.lang.String"/>
+	<field name="dTrnDate" class="java.sql.Date"/>
+	<field name="dStartTime" class="java.sql.Time"/>
+	<field name="dEndTime" class="java.sql.Time"/>
+	<field name="cUserName" class="java.lang.String"/>
+	<field name="nTotalValue" class="java.math.BigDecimal"/>
+	<field name="nDiscount" class="java.math.BigDecimal"/>
+	<field name="nDiscountVal" class="java.math.BigDecimal"/>
+	<field name="nReturns" class="java.math.BigDecimal"/>
+	<field name="nOtherCharge" class="java.math.BigDecimal"/>
+	<field name="nLoadingCharge" class="java.math.BigDecimal"/>
+	<field name="nFinalTotal" class="java.math.BigDecimal"/>
+	<field name="cInvoiceNo" class="java.lang.String"/>
+	<field name="nSales_GRN_DTID" class="java.lang.Long"/>
+	<field name="nItemID" class="java.lang.Integer"/>
+	<field name="cDescription" class="java.lang.String"/>
+	<field name="nQty_In_Pcs" class="java.math.BigDecimal"/>
+	<field name="nQty_In_NCV" class="java.math.BigDecimal"/>
+	<field name="nUnitPrice" class="java.math.BigDecimal"/>
+	<field name="nTotalValueDT" class="java.math.BigDecimal"/>
+	<field name="nActualSellingPrice" class="java.math.BigDecimal"/>
+	<field name="nTotValue_ActuaSellingPrice" class="java.math.BigDecimal"/>
+	<field name="nDiscountSellingPrice" class="java.math.BigDecimal"/>
+	<field name="nTotValue_DiscountSellingPrice" class="java.math.BigDecimal"/>
+	<variable name="variable1" class="java.math.BigDecimal" resetType="None">
+		<variableExpression><![CDATA[$F{nFinalTotal}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Prevent"/>
+	</background>
+	<title>
+		<band height="30" splitType="Prevent">
+			<staticText>
+				<reportElement key="staticText-3" x="0" y="4" width="802" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="19" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[MELCY LIFE - GRN Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="29" splitType="Stretch">
+			<textField>
+				<reportElement x="258" y="7" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{dTrnDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="454" y="7" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cUserName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="6" width="55" height="20"/>
+				<textElement/>
+				<text><![CDATA[Bill NO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="660" y="7" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cInvoiceNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="178" y="6" width="80" height="20"/>
+				<textElement/>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="578" y="6" width="80" height="20"/>
+				<textElement/>
+				<text><![CDATA[Invoice No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="7" width="80" height="20"/>
+				<textElement/>
+				<text><![CDATA[User Name]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="58" y="7" width="71" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cBillNo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Prevent">
+			<staticText>
+				<reportElement x="0" y="5" width="58" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Item No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="58" y="8" width="134" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="192" y="8" width="64" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="256" y="8" width="64" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Free QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="8" width="80" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Buy Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="8" width="80" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Total Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="8" width="80" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Selling Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="560" y="8" width="80" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Selling Value]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="640" y="8" width="80" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Discount Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="720" y="8" width="80" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Discount Value]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="24" width="797" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="4" width="797" height="1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="58" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{nItemID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="58" y="0" width="134" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cDescription}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="192" y="0" width="64" height="20"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{nQty_In_Pcs}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="256" y="0" width="64" height="20"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{nQty_In_NCV}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="320" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{nUnitPrice}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="400" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{nTotalValueDT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="480" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{nActualSellingPrice}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="560" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{nTotValue_ActuaSellingPrice}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="640" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{nDiscountSellingPrice}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="720" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{nTotValue_DiscountSellingPrice}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="19" splitType="Prevent">
+			<staticText>
+				<reportElement key="staticText-3" x="217" y="0" width="197" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="SansSerif" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Software System by eUNLOCK Solutions]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-3" x="414" y="0" width="191" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Serif" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Contact: eunlock.lk | 0778781092]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="150" splitType="Prevent">
+			<textField pattern="###0.00">
+				<reportElement x="468" y="40" width="134" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{nLoadingCharge}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="339" y="40" width="115" height="20"/>
+				<textElement/>
+				<text><![CDATA[Loading Charge (+)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="339" y="60" width="115" height="20"/>
+				<textElement/>
+				<text><![CDATA[Other Fee (+)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="339" y="80" width="115" height="20"/>
+				<textElement/>
+				<text><![CDATA[Discount Value (-)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="339" y="100" width="115" height="20"/>
+				<textElement/>
+				<text><![CDATA[Return (-)]]></text>
+			</staticText>
+			<textField pattern="###0.00">
+				<reportElement x="468" y="60" width="134" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{nOtherCharge}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="468" y="80" width="134" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{nDiscountVal}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="468" y="100" width="134" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{nReturns}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="339" y="20" width="115" height="20"/>
+				<textElement/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="###0.00">
+				<reportElement x="468" y="20" width="134" height="20"/>
+				<textElement textAlignment="Right" markup="none">
+					<font isStrikeThrough="false" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{nTotalValue}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="339" y="123" width="115" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Final Total]]></text>
+			</staticText>
+			<textField pattern="###0.00">
+				<reportElement isPrintRepeatedValues="false" mode="Transparent" x="468" y="123" width="134" height="20"/>
+				<textElement textAlignment="Right">
+					<font isBold="true" pdfFontName="Times-Bold" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$V{variable1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
